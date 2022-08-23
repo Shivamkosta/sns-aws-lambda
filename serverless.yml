@@ -1,0 +1,15 @@
+service: logger
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-2
+
+functions:
+  logger:
+    handler: src/logger.logger
+    events:
+      - sns:
+          arn: arn:aws:sns:us-east-2:472882047557:test
+          batchSize: 1
